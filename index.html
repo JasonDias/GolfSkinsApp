@@ -19,15 +19,16 @@
 
             <div class="content">
                 <div ng-repeat="player in players">
-                    <div>{{player.name}} - {{player.skins}} - {{player.birdies}}
-                        <button ng-click="addSkin(player)">Skin</button>
-                        <button ng-click="addBirdie(player)">Birdie</button>
-                    </div>
+                    <div>{{player.name}} - {{player.skins}} - {{player.birdies}}</div>
+                    <ul class="button-group">
+                        <li><button ng-click="addSkin(player)" class="small button">Skin</button></li>
+                        <li><button ng-click="addBirdie(player)" class="small button">Birdie</button></li>
+                    </ul>
                     <div>
                         <h3>Payouts</h3>
 
                         <div ng-repeat="otherPlayer in players" ng-show="otherPlayer.name != player.name">
-                            Pay {{otherPlayer.name}} ${{(otherPlayer.skins-player.skins) * skinValue + (otherPlayer.birdies-player.birdies) * birdieValue}}
+                            Pay {{otherPlayer.name}} ${{minValue((otherPlayer.skins-player.skins) * skinValue + (otherPlayer.birdies-player.birdies) * birdieValue)}}
                         </div>
                     </div>
                     <hr>
@@ -39,7 +40,7 @@
 
             <div class="content" data-section-content>
                 <div>Player Name:<input type="text" ng-model="playerName"/>
-                    <button class="button" ng-click="addPlayer(playerName)">Add Player</button>
+                    <button class="button" ng-click="addPlayer(playerName)" class="small button">Add Player</button>
                 </div>
                 <div>Skin Value: <input type="text" ng-model="skinValue"/></div>
                 <div>Birdie Value:<input type="text" ng-model="birdieValue"/></div>

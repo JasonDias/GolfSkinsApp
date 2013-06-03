@@ -19,4 +19,8 @@ function PlayerCtrl($scope) {
     $scope.addBirdie = function(player) {
         player.birdies++;
     };
+
+    $scope.minValue = function(amount) {
+        return amount < 0 ? 0 : amount;
+    }
 }
